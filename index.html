@@ -145,7 +145,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/10/everyday7-8/">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -159,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/10/everyday7-8/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2021/07/15/LeetCode7/" class="post-title-link" itemprop="url">LeetCode7</a>
         </h2>
 
         <div class="post-meta">
@@ -168,8 +168,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-07-10 15:08:38" itemprop="dateCreated datePublished" datetime="2021-07-10T15:08:38+08:00">2021-07-10</time>
+              <time title="Created: 2021-07-15 23:31:53 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:31:53+08:00">2021-07-15</time>
             </span>
 
           
@@ -183,10 +184,427 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<p>title:【leetcod每日一题】[930. 和相同的二元子数组]<br>date:2021-7-8<br>tags:Leetcode<br>authoe:mili</p>
-<hr>
-<h1 id="【leetcod每日一题】2021-7-8-930-和相同的二元子数组"><a href="#【leetcod每日一题】2021-7-8-930-和相同的二元子数组" class="headerlink" title="【leetcod每日一题】2021-7-8/[930. 和相同的二元子数组]"></a>【leetcod每日一题】2021-7-8/[930. 和相同的二元子数组]</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二元数组 nums ，和一个整数 goal ，请你统计并返回有多少个和为 goal 的 非空 子数组。</p>
+          <h2 id="【leetcod每日一题】2021-7-14-1818-绝对差值和"><a href="#【leetcod每日一题】2021-7-14-1818-绝对差值和" class="headerlink" title="【leetcod每日一题】2021-7-14/[1818. 绝对差值和]"></a>【leetcod每日一题】2021-7-14/[<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-absolute-sum-difference/">1818. 绝对差值和</a>]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你两个正整数数组 nums1 和 nums2 ，数组的长度都是 n 。</p>
+<p>数组 nums1 和 nums2 的 绝对差值和 定义为所有 |nums1[i] - nums2[i]|（0 &lt;= i &lt; n）的 总和（下标从 0 开始）。</p>
+<p>你可以选用 nums1 中的 任意一个 元素来替换 nums1 中的 至多 一个元素，以 最小化 绝对差值和。</p>
+<p>在替换数组 nums1 中最多一个元素 之后 ，返回最小绝对差值和。因为答案可能很大，所以需要对 109 + 7 取余 后返回。</p>
+<p>|x| 定义为：</p>
+<p>如果 x &gt;= 0 ，值为 x ，或者<br>如果 x &lt;= 0 ，值为 -x</p>
+<p>示例 1：</p>
+<p>输入：nums1 = [1,7,5], nums2 = [2,3,5]<br>输出：3<br>解释：有两种可能的最优方案：</p>
+<ul>
+<li>将第二个元素替换为第一个元素：[1,7,5] =&gt; [1,1,5] ，或者</li>
+<li>将第二个元素替换为第三个元素：[1,7,5] =&gt; [1,5,5]<br>两种方案的绝对差值和都是 |1-2| + (|1-3| 或者 |5-3|) + |5-5| = 3<br>示例 2：</li>
+</ul>
+<p>输入：nums1 = [2,4,6,8,10], nums2 = [2,4,6,8,10]<br>输出：0<br>解释：nums1 和 nums2 相等，所以不用替换元素。绝对差值和为 0<br>示例 3：</p>
+<p>输入：nums1 = [1,10,4,4,2,7], nums2 = [9,3,5,1,7,4]<br>输出：20<br>解释：将第一个元素替换为第二个元素：[1,10,4,4,2,7] =&gt; [10,10,4,4,2,7]<br>绝对差值和为 |10-9| + |10-3| + |4-5| + |4-1| + |2-7| + |7-4| = 20</p>
+<p>提示：</p>
+<p>n == nums1.length<br>n == nums2.length<br>1 &lt;= n &lt;= 105<br>1 &lt;= nums1[i], nums2[i] &lt;= 105</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>难度为中等，本题没有昨天的题有难度，所以多多少少有点索然无味。</p>
+<p>直接上代码吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minAbsoluteSumDiff</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        K = <span class="built_in">pow</span>(<span class="number">10</span>,<span class="number">9</span>)+<span class="number">7</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        reduce = <span class="number">0</span></span><br><span class="line">        l = <span class="built_in">set</span>(nums1)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums1)):</span><br><span class="line">            a = <span class="built_in">abs</span>(nums1[i]-nums2[i])</span><br><span class="line">            ans += a</span><br><span class="line">            ans = ans % K</span><br><span class="line">            <span class="keyword">if</span> a&gt;reduce:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(a-reduce):</span><br><span class="line">                    <span class="keyword">if</span> (nums2[i]+j) <span class="keyword">in</span> l:</span><br><span class="line">                        reduce = a-j</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">if</span> (nums2[i]-j) <span class="keyword">in</span> l:</span><br><span class="line">                        reduce = a-j</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">        ans = ans - reduce</span><br><span class="line">        ans = ans % K</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p>本题的思路其实就很简单，同时遍历nums1和nums2，计算对应数组的差的绝对值，边计算绝对差，边寻找nums[i]的替代品。可以将redunce理解为最后绝对差和的修正值，此值越大，ans越小。最初修正值为0，在遍历中寻找最大修正值。在这里使用set（nums1）主要是因为在set中找元素效率最高。</p>
+<p>如果单个的差绝对值小于当前修正值，说明替换之后也不存在比当前修正值大的可能，然后就是沿着nums2[i]向两边依次外扩，判断l中是都有对应元素，若有则刷新修正值。</p>
+<p>最后ans - 修正值，并取模即可。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度O(n + nlogn)。应该是这样吧？因为寻找修正时的循环应该是这个时间复杂度</p>
+<p>空间复杂度O(nlong)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/15/LeetCode6/" class="post-title-link" itemprop="url">LeetCode6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:31:49 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:31:49+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="【leetcod每日一题】2021-7-13-218-天际线问题"><a href="#【leetcod每日一题】2021-7-13-218-天际线问题" class="headerlink" title="【leetcod每日一题】2021-7-13/[218. 天际线问题]"></a>【leetcod每日一题】2021-7-13/[<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/the-skyline-problem/">218. 天际线问题</a>]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>城市的天际线是从远处观看该城市中所有建筑物形成的轮廓的外部轮廓。给你所有建筑物的位置和高度，请返回由这些建筑物形成的 天际线 。</p>
+<p>每个建筑物的几何信息由数组 buildings 表示，其中三元组 buildings[i] = [lefti, righti, heighti] 表示：</p>
+<p>lefti 是第 i 座建筑物左边缘的 x 坐标。<br>righti 是第 i 座建筑物右边缘的 x 坐标。<br>heighti 是第 i 座建筑物的高度。<br>天际线 应该表示为由 “关键点” 组成的列表，格式 [[x1,y1],[x2,y2],…] ，并按 x 坐标 进行 排序 。关键点是水平线段的左端点。列表中最后一个点是最右侧建筑物的终点，y 坐标始终为 0 ，仅用于标记天际线的终点。此外，任何两个相邻建筑物之间的地面都应被视为天际线轮廓的一部分。</p>
+<p>注意：输出天际线中不得有连续的相同高度的水平线。例如 […[2 3], [4 5], [7 5], [11 5], [12 7]…] 是不正确的答案；三条高度为 5 的线应该在最终输出中合并为一个：[…[2 3], [4 5], [12 7], …]</p>
+<p>示例 1：</p>
+<p>输入：buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]<br>输出：[[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]<br>解释：<br>图 A 显示输入的所有建筑物的位置和高度，<br>图 B 显示由这些建筑物形成的天际线。图 B 中的红点表示输出列表中的关键点。<br>示例 2：</p>
+<p>输入：buildings = [[0,2,3],[2,5,3]]<br>输出：[[0,3],[5,0]]</p>
+<p>提示：</p>
+<p>1 &lt;= buildings.length &lt;= 104<br>0 &lt;= lefti &lt; righti &lt;= 231 - 1<br>1 &lt;= heighti &lt;= 231 - 1<br>buildings 按 lefti 非递减排序</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>题目文字描述有点单薄，md文件插图片又有点麻烦（主要是懒）。建议打开力扣题目链接配合食用。</p>
+<p>本题标注为困难，实际坐下来，感觉也确实对得起困难这个难度。当然也可能是我菜。</p>
+<p>看到本题说实话最开始是有点没思路的，然后想着遍历每个建筑，判断是否被当前建筑物遮挡，然后计算是否将对应的点加入到结果列表中。然后事实证明有点麻烦，我写不出来。</p>
+<p>然后试着仔细分析了都是哪些点会被加入到结果列表里。根据题目描述，一个建筑物最多只会在列表中增加两个点，左上点和右下点。但是两个点能否加入到结果列表里都是有要求的，左上点如果在加入的时候是当前最高点，那么可以加入结果列表，右下点如果在建筑物生命周期结束的时候是最高点，那么右下点会加入到结果列表。这个时候我加入了一个生命周期的概念，其实是为了便于理解，因为我最开始也是从这个角度开始想的，顺着X轴逐步推进，然后依次处理每一个X点的高度。所以我这边在代码中将每一个建筑坐标拆成2个X坐标点的事件。例如[2,9,10]题中描述为x从2到9高度为10的建筑，在题解中拆为[1,10,True]和[9,10,False]两个元素，分别表示在x==2是high == 10开始生效，在x==9时，high==10生命周期结束。</p>
+<p>所以此时解题思路就逐渐明晰了，先将各个建筑的左边按上述规则拆分为X点的事件,并存入temp数组，然后遍历该数组。若遇到新最大高度生效，则res列表中增加新点，否则不加。若愚最大高度失效，则res列表中增加新点，否则不加。所需要维护变量标记当前的最大高度，因为存在变量过期失效的情况，所以需要使用类似栈的数据结构来维护。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSkyline</span>(<span class="params">self, buildings: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span></span><br><span class="line">        res = []</span><br><span class="line">        temp = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> buildings:</span><br><span class="line">            start = item[<span class="number">0</span>]</span><br><span class="line">            end = item[<span class="number">1</span>]</span><br><span class="line">            high = item[<span class="number">2</span>]</span><br><span class="line">            temp.append([start,high,<span class="literal">True</span>])</span><br><span class="line">            temp.append([end,high,<span class="literal">False</span>])</span><br><span class="line"></span><br><span class="line">        high = [<span class="number">0</span>]</span><br><span class="line">        temp = <span class="built_in">sorted</span>(temp, key = <span class="keyword">lambda</span> x : x[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(temp)):</span><br><span class="line">            <span class="keyword">if</span> temp[i][<span class="number">2</span>]:</span><br><span class="line">                <span class="keyword">if</span> temp[i][<span class="number">1</span>] &gt; high[-<span class="number">1</span>]:</span><br><span class="line">                    high.append(temp[i][<span class="number">1</span>])</span><br><span class="line">                    high.sort()</span><br><span class="line">                    <span class="keyword">if</span> res <span class="keyword">and</span> res[-<span class="number">1</span>][<span class="number">0</span>] == temp[i][<span class="number">0</span>]:</span><br><span class="line">                        res.pop()</span><br><span class="line">                        <span class="keyword">if</span> res <span class="keyword">and</span> res[-<span class="number">1</span>][<span class="number">1</span>] == high[-<span class="number">1</span>]:</span><br><span class="line">                            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                    res.append([temp[i][<span class="number">0</span>],high[-<span class="number">1</span>]])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    high.append(temp[i][<span class="number">1</span>])</span><br><span class="line">                    high.sort()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> temp[i][<span class="number">1</span>] == high[-<span class="number">1</span>]:</span><br><span class="line">                    high.remove(temp[i][<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">if</span> temp[i][<span class="number">1</span>] == high[-<span class="number">1</span>]:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">if</span> res <span class="keyword">and</span> res[-<span class="number">1</span>][<span class="number">0</span>] == temp[i][<span class="number">0</span>]:</span><br><span class="line">                        res.pop()</span><br><span class="line">                    res.append([temp[i][<span class="number">0</span>],high[-<span class="number">1</span>]])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    high.remove(temp[i][<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>因为存在刚好在同一个X点旧的最大高度失效，同时增加新的最大高度，因为同一个X点只能有最多一个点，所以需要增加额外的判断，一般来说判断res[-1]的X是否和当前要加入的点的X是都相同，如果相同则pop掉res的最后元素即可，其中还有一个特殊情况就是，同一个最大高度，如果在该点失效，又重新生效，那么除了pop掉res尾元素之外，当前要添加的点也应该跳过。</p>
+<p>除了上面说的因为加入新最大高度导致的res加入新点外，最大高度失效也会导致例外情况，如果最大高度失效，但是high栈中还有别的同样的高度在生效，例如当前最大高度为6，高度为6的建筑有3个，此时即使一个高度为6的建筑过期也res中也不会产生新的点。</p>
+<p>处理完上面说的特殊情况然后就可以AC本题了。</p>
+<p>（本题花费了大半天的时间，A出来还是蛮有成就感的。）</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>遍历一遍原始数组，遍历一遍辅助数组（长度为2N），时间复杂度为O(3N)</p>
+<p>额外申请了辅助数组的空间和高度列表的空间，空间复杂度为O(3N）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/15/LeetCode5/" class="post-title-link" itemprop="url">LeetCode5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:31:44 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:31:44+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="【leetcod每日一题】2021-7-11-amp-12-274-H-指数-amp-275-H-指数-II"><a href="#【leetcod每日一题】2021-7-11-amp-12-274-H-指数-amp-275-H-指数-II" class="headerlink" title="【leetcod每日一题】2021-7-11&amp;12/[274. H 指数&amp;275. H 指数 II]"></a>【leetcod每日一题】2021-7-11&amp;12/[274. H 指数&amp;275. H 指数 II]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol start="274">
+<li>H 指数</li>
+</ol>
+<p>给定一位研究者论文被引用次数的数组（被引用次数是非负整数）。编写一个方法，计算出研究者的 h 指数。</p>
+<p>h 指数的定义：h 代表“高引用次数”（high citations），一名科研人员的 h 指数是指他（她）的 （N 篇论文中）总共有 h 篇论文分别被引用了至少 h 次。且其余的 N - h 篇论文每篇被引用次数 不超过 h 次。</p>
+<p>例如：某人的 h 指数是 20，这表示他已发表的论文中，每篇被引用了至少 20 次的论文总共有 20 篇。</p>
+<p>示例：</p>
+<p>输入：citations = [3,0,6,1,5]<br>输出：3<br>解释：给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。<br>     由于研究者有 3 篇论文每篇 至少 被引用了 3 次，其余两篇论文每篇被引用 不多于 3 次，所以她的 h 指数是 3。</p>
+<ol start="275">
+<li>H 指数 II</li>
+</ol>
+<p>给定一位研究者论文被引用次数的数组（被引用次数是非负整数），数组已经按照 升序排列 。编写一个方法，计算出研究者的 h 指数。</p>
+<p>h 指数的定义: “h 代表“高引用次数”（high citations），一名科研人员的 h 指数是指他（她）的 （N 篇论文中）总共有 h 篇论文分别被引用了至少 h 次。（其余的 N - h 篇论文每篇被引用次数不多于 h 次。）”</p>
+<p>示例:</p>
+<p>输入: citations = [0,1,3,5,6]<br>输出: 3<br>解释: 给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 0, 1, 3, 5, 6 次。<br>     由于研究者有 3 篇论文每篇至少被引用了 3 次，其余两篇论文每篇被引用不多于 3 次，所以她的 h 指数是 3。</p>
+<p>说明:</p>
+<p>如果 h 有多有种可能的值 ，h 指数是其中最大的那个。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这两题整体解法类似，所以就放在同一篇文章里面解析。</p>
+<p>这两道题目在leetcode上面都是标注为中等题目，但是其实解题方法都类似。题目要求找出h， 使大于等于h个元素大于等于h。</p>
+<p>很容易想到将列表排序，然后依次遍历的解法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hIndex</span>(<span class="params">self, citations: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> citations:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        citations = <span class="built_in">sorted</span>(citations, reverse=<span class="literal">True</span>)</span><br><span class="line">        length = <span class="built_in">len</span>(citations)</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; length:</span><br><span class="line">            <span class="keyword">if</span> citations[i] &gt;= i + <span class="number">1</span> :</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> i</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将citations数组原地降序排序，然后从前向后遍历，直到citations[i] &lt; i + 1（因为索引从0开始，所以修正1）。</p>
+<p>没有什么好说的。</p>
+<p>275题默认的元素是升序排列的，所以也省去了列表排序的过程，直接从后向前遍历即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hIndex</span>(<span class="params">self, citations: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        h = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> citations[: : -<span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">if</span> i &gt; h:</span><br><span class="line">                h += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(搞不懂这两道题有什么不同。)</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>两题的时间复杂度均为O(N)，空间复杂度均为O(1)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/15/LeetCode4/" class="post-title-link" itemprop="url">LeetCode4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:31:40 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:31:40+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="【leetcod每日一题】2021-7-10-981-基于时间的键值存储"><a href="#【leetcod每日一题】2021-7-10-981-基于时间的键值存储" class="headerlink" title="【leetcod每日一题】2021-7-10/[981. 基于时间的键值存储]"></a>【leetcod每日一题】2021-7-10/[981. 基于时间的键值存储]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>创建一个基于时间的键值存储类 TimeMap，它支持下面两个操作：</p>
+<ol>
+<li>set(string key, string value, int timestamp)</li>
+</ol>
+<p>存储键 key、值 value，以及给定的时间戳 timestamp。<br>2. get(string key, int timestamp)</p>
+<p>返回先前调用 set(key, value, timestamp_prev) 所存储的值，其中 timestamp_prev &lt;= timestamp。<br>如果有多个这样的值，则返回对应最大的  timestamp_prev 的那个值。<br>如果没有值，则返回空字符串（””）。</p>
+<p>示例 1：</p>
+<p>输入：inputs = [“TimeMap”,”set”,”get”,”get”,”set”,”get”,”get”], inputs = [[],[“foo”,”bar”,1],[“foo”,1],[“foo”,3],[“foo”,”bar2”,4],[“foo”,4],[“foo”,5]]<br>输出：[null,null,”bar”,”bar”,null,”bar2”,”bar2”]<br>解释：<br>TimeMap kv;<br>kv.set(“foo”, “bar”, 1); // 存储键 “foo” 和值 “bar” 以及时间戳 timestamp = 1<br>kv.get(“foo”, 1);  // 输出 “bar”<br>kv.get(“foo”, 3); // 输出 “bar” 因为在时间戳 3 和时间戳 2 处没有对应 “foo” 的值，所以唯一的值位于时间戳 1 处（即 “bar”）<br>kv.set(“foo”, “bar2”, 4);<br>kv.get(“foo”, 4); // 输出 “bar2”<br>kv.get(“foo”, 5); // 输出 “bar2”   </p>
+<p>示例 2：</p>
+<p>输入：inputs = [“TimeMap”,”set”,”set”,”get”,”get”,”get”,”get”,”get”], inputs = [[],[“love”,”high”,10],[“love”,”low”,20],[“love”,5],[“love”,10],[“love”,15],[“love”,20],[“love”,25]]<br>输出：[null,null,null,””,”high”,”high”,”low”,”low”]</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>题目有点长，看着有点烦。懒得再赘述了，因为也没什么人看，其实也就是自己记录一下罢了。</p>
+<p>这种类设计的题目其实做的不太多，但是其实看下来这道题难度不算太大。如果不考虑时间要求的话，基本上是有手就行的程度了。也就勉强对得起一道中等题的身份吧。话不多说先上代码吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimeMap</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.status = defaultdict(<span class="built_in">list</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set</span>(<span class="params">self, key: <span class="built_in">str</span>, value: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span></span><br><span class="line">        self.status[key].append((value, timestamp))</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, key: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span></span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        self.status[key] = <span class="built_in">sorted</span>(self.status[key], key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>],reverse = <span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">for</span> res_key, res_time <span class="keyword">in</span> self.status[key]:</span><br><span class="line">            <span class="keyword">if</span> res_time &lt;= timestamp:</span><br><span class="line">                <span class="keyword">return</span> res_key</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your TimeMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = TimeMap()</span></span><br><span class="line"><span class="comment"># obj.set(key,value,timestamp)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get(key,timestamp)</span></span><br></pre></td></tr></table></figure>
+
+<p>这样写其实讲道理是跑得通的，但是会在大样本的用例处失败。</p>
+<p>其实个人感觉这道理可以称得上是难点的地方也就1个吧，就是选用什么样的数据结构来存储各种数据，兼顾空间复杂度和get操作的时间复杂度。</p>
+<p>上面的这段代码会失败，其实很简单，因为相当于是记录了所以的信息，对一些无用信息并没有过滤。而且题目里面表明了时间值在存入的时候是严格递增的，但是我还是倔强的进行了一次排序。</p>
+<p>简单修改之后又如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimeMap</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.status = defaultdict(<span class="built_in">list</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set</span>(<span class="params">self, key: <span class="built_in">str</span>, value: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span></span><br><span class="line">        self.status[key].append((value, timestamp))</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, key: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span></span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> res_key, res_time <span class="keyword">in</span> self.status[key][::-<span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">if</span> res_time &lt;= timestamp:</span><br><span class="line">                <span class="keyword">return</span> res_key</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your TimeMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = TimeMap()</span></span><br><span class="line"><span class="comment"># obj.set(key,value,timestamp)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get(key,timestamp)</span></span><br></pre></td></tr></table></figure>
+
+<p>其实这里只是去掉了按个无用的排序，最后要去到返回值的时候还是要遍历比较多的样本。对输入的数据没有过滤。就是在set接口中，没有做任何操作就把数据丢进去，导致在取的时候有比较多的工作量。记录的时候其实是一条一条记录的，其实会有比较多的重复数据。因为在get操作的时候，其实是一段时间对应一个返回，所以其实应该在记录数据的时候就做好区分，在get的时候只要判断时间点是否在对应的区间，然后返回即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimeMap</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.status = defaultdict(<span class="built_in">list</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set</span>(<span class="params">self, key: <span class="built_in">str</span>, value: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.status[key] :</span><br><span class="line">            self.status[key].append([value, timestamp, timestamp])</span><br><span class="line">        <span class="keyword">elif</span> value != self.status[key][-<span class="number">1</span>][<span class="number">0</span>]:</span><br><span class="line">            self.status[key][-<span class="number">1</span>][<span class="number">2</span>] = timestamp</span><br><span class="line">            self.status[key].append([value, timestamp, timestamp])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.status[key][-<span class="number">1</span>][<span class="number">2</span>] = timestamp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, key: <span class="built_in">str</span>, timestamp: <span class="built_in">int</span></span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.status[key] <span class="keyword">or</span> timestamp &lt; self.status[key][<span class="number">0</span>][<span class="number">1</span>] :</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> self.status[key]:</span><br><span class="line">            <span class="keyword">if</span> item[<span class="number">1</span>] &lt;= timestamp &lt; item[<span class="number">2</span>]:</span><br><span class="line">                <span class="keyword">return</span> item[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> item[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your TimeMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = TimeMap()</span></span><br><span class="line"><span class="comment"># obj.set(key,value,timestamp)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get(key,timestamp)</span></span><br></pre></td></tr></table></figure>
+
+<p>代码如上。</p>
+<p>最终题解在python3提交中</p>
+<p>执行用时：356 ms, 在所有 Python3 提交中击败了100.00%的用户</p>
+<p>内存消耗：60 MB, 在所有 Python3 提交中击败了97.96%的用户</p>
+<p>（虽然没有什么卵用，但是并不妨碍我开心一下）</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>这题我一下子不知道该怎么去分析复杂度了，就偷个懒不分析了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/15/LeetCode3/" class="post-title-link" itemprop="url">LeetCode3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:30:52 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:30:52+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="【leetcod每日一题】2021-7-9-面试题-17-10-主要元素"><a href="#【leetcod每日一题】2021-7-9-面试题-17-10-主要元素" class="headerlink" title="【leetcod每日一题】2021-7-9/[面试题 17.10. 主要元素]"></a>【leetcod每日一题】2021-7-9/[<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-majority-element-lcci/">面试题 17.10. 主要元素</a>]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>数组中占比超过一半的元素称之为主要元素。给你一个 整数 数组，找出其中的主要元素。若没有，返回 -1 。请设计时间复杂度为 O(N) 、空间复杂度为 O(1) 的解决方案。</p>
+<p>示例 1：</p>
+<p>输入：[1,2,5,9,5,9,5,5,5]<br>输出：5<br>示例 2：</p>
+<p>输入：[3,2]<br>输出：-1<br>示例 3：</p>
+<p>输入：[2,2,1,1,1,2,2]<br>输出：2</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>今日题目是一道简单题目，看完基本上就思路很清晰了。这里提供两种解法吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        counter = collections.Counter(nums)</span><br><span class="line">        counter = <span class="built_in">sorted</span>(counter.items(),key = <span class="keyword">lambda</span> x : x[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span> counter[-<span class="number">1</span>] [<span class="number">1</span>] &gt; n // <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> counter[-<span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<p>这里是直接只用了collections模块中的Counter方法，统计列表中个元素出现的频次，然后调用sorted方法，根据出现的次数排序，取出现次数最多的值。但是在函数返回的时候需要再判断一次该值出现次数是否超过列表的一般。这种解法相对比较朴素。</p>
+<p>下面还有相对高级一点的解法（其实并没有）。使用摩尔计数法。至于为什么要叫摩尔计数其实我也不太清楚，反正大家都这么叫也就这么叫了。</p>
+<p>题目要求找到列表中出现次数超过列表总数一半的元素，所以假定最元素为主要元素，并技术count = 1，然后遍历后续数组，遇到相同元素就count++ ，否则count–，一旦count == 0,则记新的元素为主要元素。其实思路就是不相同的元素互相抵消，最后剩下元素就有可能是主要元素。为什么要说有可能？因为如果像[1, 2, 3]这样的数组，肉眼可见是没有主要元素的，但是如果单纯按照上述方法遍历一遍数组，最后主要元素会记为3。所以在最后需要再验证一遍元素的出现次数是否超过一半。代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        major = nums[<span class="number">0</span>]</span><br><span class="line">        count = <span class="number">1</span></span><br><span class="line">        length = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> count:</span><br><span class="line">                major = i</span><br><span class="line">                count = <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == major:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> major <span class="keyword">if</span> nums.count(major) &gt; length // <span class="number">2</span> <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>其实本题还可以使用哈希表计数一旦某一元素出现次数超过 length // 2就返回该元素，否则返回-1。</p>
+<p>（因为太菜了，所以只能在写一道简单题的多种解法。有点孔乙己茴香豆的四种写法的味道。）</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>计数排序：</p>
+<p>​    时间复杂度：计数接口的时间复杂度O(N),排序接口的时间复杂度O(N)。没有嵌套关系，所以总的来说时间复杂度还是O(N)级别的。</p>
+<p>​    空间复杂度：额外申请了一个列表，空间复杂度O(N)</p>
+<p>摩尔排序：</p>
+<p>​    时间复杂度：遍历一遍数组，时间复杂度O(N)</p>
+<p>​    空间复杂度：额外申请了3个变量，空间复杂度为O(1)</p>
+<p>哈希计数：</p>
+<p>​    和第一种解法相同。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/15/LeetCode2/" class="post-title-link" itemprop="url">LeetCode2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:20:01 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:20:01+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="【leetcod每日一题】2021-7-8-930-和相同的二元子数组"><a href="#【leetcod每日一题】2021-7-8-930-和相同的二元子数组" class="headerlink" title="【leetcod每日一题】2021-7-8/[930. 和相同的二元子数组]"></a>【leetcod每日一题】2021-7-8/[930. 和相同的二元子数组]</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二元数组 nums ，和一个整数 goal ，请你统计并返回有多少个和为 goal 的 非空 子数组。</p>
 <p>子数组 是数组的一段连续部分。</p>
 <p>示例 1：</p>
 <p>输入：nums = [1,0,1,0,1], goal = 2<br>输出：4<br>解释：<br>有 4 个满足题目要求的子数组：[1,0,1]、[1,0,1,0]、[0,1,0,1]、[1,0,1]<br>示例 2：</p>
@@ -225,7 +643,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/08/everyday7-7/">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -239,7 +657,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/08/everyday7-7/" class="post-title-link" itemprop="url">leetcod每日一题:大餐计数</a>
+            <a href="/2021/07/15/LeetCode1/" class="post-title-link" itemprop="url">LeetCode1</a>
         </h2>
 
         <div class="post-meta">
@@ -248,16 +666,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-07-08 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-08T00:00:00+08:00">2021-07-08</time>
+              <time title="Created: 2021-07-15 23:17:34 / Modified: 23:36:21" itemprop="dateCreated datePublished" datetime="2021-07-15T23:17:34+08:00">2021-07-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-10 15:34:37" itemprop="dateModified" datetime="2021-07-10T15:34:37+08:00">2021-07-10</time>
-              </span>
 
           
 
@@ -522,383 +934,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/06/06/networkSecurity-web-ClickJacking/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="bayue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homie blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/06/networkSecurity-web-ClickJacking/" class="post-title-link" itemprop="url">【Web安全】点击劫持</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-06 11:26:51" itemprop="dateCreated datePublished" datetime="2019-06-06T11:26:51+08:00">2019-06-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天在测试前端开发项目，在生产环境的流程回归验证中，遇到了Web页面中使用<code>iframe</code>内嵌三方告知用户协议无法加载的问题。<code>Error</code>提示为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Refused to display &#x27;https://www.xxx.com/&#x27; in a frame because it set &#x27;X-Frame-Options&#x27; to &#x27;sameorigin&#x27;.</span><br></pre></td></tr></table></figure>
-<p>这是一种经典的防范点击劫持(<em>Click Jacking</em>)的方式，通过设置HTTP请求头<code>X-Frame-Options</code>来禁止跨域<code>iframe</code>的引入。以下通过：</p>
-<blockquote>
-<ul>
-<li>什么是点击劫持</li>
-<li>点击劫持存在的Web安全隐患</li>
-<li>如何防范点击劫持</li>
-</ul>
-</blockquote>
-<p>三方面进行基本的概述与总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/06/networkSecurity-web-ClickJacking/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/05/29/ssh-generate-SSH-key-and-deploy-it/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="bayue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homie blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/29/ssh-generate-SSH-key-and-deploy-it/" class="post-title-link" itemprop="url">Generate SSH key and How deploy it</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-05-29 19:21:12" itemprop="dateCreated datePublished" datetime="2019-05-29T19:21:12+08:00">2019-05-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h4><p>Git is a distributed version control system, which means you can work locally but you can also share or “push” your changes to other servers. Before you can push your changes to a GitLab server you need a secure communication channel for sharing information.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/05/29/ssh-generate-SSH-key-and-deploy-it/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/05/16/git-version-control-basics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="bayue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homie blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/16/git-version-control-basics/" class="post-title-link" itemprop="url">Git版本控制基础应用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-05-16 14:26:15" itemprop="dateCreated datePublished" datetime="2019-05-16T14:26:15+08:00">2019-05-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>过去的一系列产品开发过程中，版本控制大多集中于svn的应用，对于git相对较为生疏。现阶段在开发一款企业级多系统应用过程中，对产品的版本分割、迭代有较强的前置需求，需要我自行维护构建一整套多版本的开发源码，因此借助公司内部已有gitlab平台做出基本尝试。<br>此文主要是用以记录采用git这一整套分布式版本控制系统过程中所归纳总结的一系列命令行、Repository、Branches等管理应用心得及踩坑之处。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/05/16/git-version-control-basics/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/04/23/python-tutorial-record/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="bayue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homie blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/23/python-tutorial-record/" class="post-title-link" itemprop="url">【Python】基础教程学习记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-04-23 16:35:57" itemprop="dateCreated datePublished" datetime="2019-04-23T16:35:57+08:00">2019-04-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文核心记录在<code>Python</code>基础知识与进阶教程学习过程中的一些零碎知识记录，主要用于基础知识的巩固，以便后续使用<code>Python</code>过程遇到疑问参照。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/04/23/python-tutorial-record/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/04/19/node-server-deploy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="bayue">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Homie blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/19/node-server-deploy/" class="post-title-link" itemprop="url">【Server】基于Node及MongoDB的服务配置与部署</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-04-19 10:52:36" itemprop="dateCreated datePublished" datetime="2019-04-19T10:52:36+08:00">2019-04-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在过去几天的调研参考之后，拟定<em>Fork</em>Github相关的repositories，构建整站解决方案。</p>
-<ul>
-<li>后端服务基于<a target="_blank" rel="noopener" href="https://github.com/bayuefen/node-elm">node-elm</a></li>
-<li>数据库采用<a target="_blank" rel="noopener" href="https://www.mongodb.com/">MongoDB</a></li>
-<li>商户系统Web服务基于<a target="_blank" rel="noopener" href="https://github.com/bayuefen/vue2-manage">vue2-manage</a></li>
-<li>用户系统Web服务基于<a target="_blank" rel="noopener" href="https://github.com/bayuefen/vue2-elm">vue2-elm</a></li>
-</ul>
-<p>本文主要根据Node及MongoDB，在服务配置与部署过程中所遇到的一些问题的解决方案进行总结。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/04/19/node-server-deploy/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -968,7 +1003,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

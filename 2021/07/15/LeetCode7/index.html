@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"homiezoom.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="【leetcod每日一题】2021-7-14&#x2F;[1818. 绝对差值和]题目给你两个正整数数组 nums1 和 nums2 ，数组的长度都是 n 。 数组 nums1 和 nums2 的 绝对差值和 定义为所有 |nums1[i] - nums2[i]|（0 &lt;&#x3D; i &lt; n）的 总和（下标从 0 开始）。 你可以选用 nums1 中的 任意一个 元素来替换 nums1 中的 至多 一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode7">
+<meta property="og:url" content="https://homiezoom.github.io/2021/07/15/LeetCode7/index.html">
+<meta property="og:site_name" content="Homie blog">
+<meta property="og:description" content="【leetcod每日一题】2021-7-14&#x2F;[1818. 绝对差值和]题目给你两个正整数数组 nums1 和 nums2 ，数组的长度都是 n 。 数组 nums1 和 nums2 的 绝对差值和 定义为所有 |nums1[i] - nums2[i]|（0 &lt;&#x3D; i &lt; n）的 总和（下标从 0 开始）。 你可以选用 nums1 中的 任意一个 元素来替换 nums1 中的 至多 一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-15T15:31:53.000Z">
+<meta property="article:modified_time" content="2021-07-15T15:38:19.109Z">
+<meta property="article:author" content="bayue">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://homiezoom.github.io/2021/07/15/LeetCode7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LeetCode7 | Homie blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Homie blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode7
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:31:53 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:31:53+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="【leetcod每日一题】2021-7-14-1818-绝对差值和"><a href="#【leetcod每日一题】2021-7-14-1818-绝对差值和" class="headerlink" title="【leetcod每日一题】2021-7-14/[1818. 绝对差值和]"></a>【leetcod每日一题】2021-7-14/[<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-absolute-sum-difference/">1818. 绝对差值和</a>]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你两个正整数数组 nums1 和 nums2 ，数组的长度都是 n 。</p>
+<p>数组 nums1 和 nums2 的 绝对差值和 定义为所有 |nums1[i] - nums2[i]|（0 &lt;= i &lt; n）的 总和（下标从 0 开始）。</p>
+<p>你可以选用 nums1 中的 任意一个 元素来替换 nums1 中的 至多 一个元素，以 最小化 绝对差值和。</p>
+<p>在替换数组 nums1 中最多一个元素 之后 ，返回最小绝对差值和。因为答案可能很大，所以需要对 109 + 7 取余 后返回。</p>
+<p>|x| 定义为：</p>
+<p>如果 x &gt;= 0 ，值为 x ，或者<br>如果 x &lt;= 0 ，值为 -x</p>
+<p>示例 1：</p>
+<p>输入：nums1 = [1,7,5], nums2 = [2,3,5]<br>输出：3<br>解释：有两种可能的最优方案：</p>
+<ul>
+<li>将第二个元素替换为第一个元素：[1,7,5] =&gt; [1,1,5] ，或者</li>
+<li>将第二个元素替换为第三个元素：[1,7,5] =&gt; [1,5,5]<br>两种方案的绝对差值和都是 |1-2| + (|1-3| 或者 |5-3|) + |5-5| = 3<br>示例 2：</li>
+</ul>
+<p>输入：nums1 = [2,4,6,8,10], nums2 = [2,4,6,8,10]<br>输出：0<br>解释：nums1 和 nums2 相等，所以不用替换元素。绝对差值和为 0<br>示例 3：</p>
+<p>输入：nums1 = [1,10,4,4,2,7], nums2 = [9,3,5,1,7,4]<br>输出：20<br>解释：将第一个元素替换为第二个元素：[1,10,4,4,2,7] =&gt; [10,10,4,4,2,7]<br>绝对差值和为 |10-9| + |10-3| + |4-5| + |4-1| + |2-7| + |7-4| = 20</p>
+<p>提示：</p>
+<p>n == nums1.length<br>n == nums2.length<br>1 &lt;= n &lt;= 105<br>1 &lt;= nums1[i], nums2[i] &lt;= 105</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>难度为中等，本题没有昨天的题有难度，所以多多少少有点索然无味。</p>
+<p>直接上代码吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minAbsoluteSumDiff</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        K = <span class="built_in">pow</span>(<span class="number">10</span>,<span class="number">9</span>)+<span class="number">7</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        reduce = <span class="number">0</span></span><br><span class="line">        l = <span class="built_in">set</span>(nums1)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums1)):</span><br><span class="line">            a = <span class="built_in">abs</span>(nums1[i]-nums2[i])</span><br><span class="line">            ans += a</span><br><span class="line">            ans = ans % K</span><br><span class="line">            <span class="keyword">if</span> a&gt;reduce:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(a-reduce):</span><br><span class="line">                    <span class="keyword">if</span> (nums2[i]+j) <span class="keyword">in</span> l:</span><br><span class="line">                        reduce = a-j</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">if</span> (nums2[i]-j) <span class="keyword">in</span> l:</span><br><span class="line">                        reduce = a-j</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">        ans = ans - reduce</span><br><span class="line">        ans = ans % K</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p>本题的思路其实就很简单，同时遍历nums1和nums2，计算对应数组的差的绝对值，边计算绝对差，边寻找nums[i]的替代品。可以将redunce理解为最后绝对差和的修正值，此值越大，ans越小。最初修正值为0，在遍历中寻找最大修正值。在这里使用set（nums1）主要是因为在set中找元素效率最高。</p>
+<p>如果单个的差绝对值小于当前修正值，说明替换之后也不存在比当前修正值大的可能，然后就是沿着nums2[i]向两边依次外扩，判断l中是都有对应元素，若有则刷新修正值。</p>
+<p>最后ans - 修正值，并取模即可。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度O(n + nlogn)。应该是这样吧？因为寻找修正时的循环应该是这个时间复杂度</p>
+<p>空间复杂度O(nlong)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/15/LeetCode6/" rel="prev" title="LeetCode6">
+      <i class="fa fa-chevron-left"></i> LeetCode6
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90leetcod%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E3%80%912021-7-14-1818-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E5%80%BC%E5%92%8C"><span class="nav-number">1.</span> <span class="nav-text">【leetcod每日一题】2021-7-14&#x2F;[1818. 绝对差值和]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">bayue</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bayue</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

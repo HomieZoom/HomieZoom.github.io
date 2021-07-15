@@ -145,6 +145,383 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/06/06/networkSecurity-web-ClickJacking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/06/networkSecurity-web-ClickJacking/" class="post-title-link" itemprop="url">【Web安全】点击劫持</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-06-06 11:26:51" itemprop="dateCreated datePublished" datetime="2019-06-06T11:26:51+08:00">2019-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天在测试前端开发项目，在生产环境的流程回归验证中，遇到了Web页面中使用<code>iframe</code>内嵌三方告知用户协议无法加载的问题。<code>Error</code>提示为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Refused to display &#x27;https://www.xxx.com/&#x27; in a frame because it set &#x27;X-Frame-Options&#x27; to &#x27;sameorigin&#x27;.</span><br></pre></td></tr></table></figure>
+<p>这是一种经典的防范点击劫持(<em>Click Jacking</em>)的方式，通过设置HTTP请求头<code>X-Frame-Options</code>来禁止跨域<code>iframe</code>的引入。以下通过：</p>
+<blockquote>
+<ul>
+<li>什么是点击劫持</li>
+<li>点击劫持存在的Web安全隐患</li>
+<li>如何防范点击劫持</li>
+</ul>
+</blockquote>
+<p>三方面进行基本的概述与总结。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/06/networkSecurity-web-ClickJacking/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/05/29/ssh-generate-SSH-key-and-deploy-it/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/29/ssh-generate-SSH-key-and-deploy-it/" class="post-title-link" itemprop="url">Generate SSH key and How deploy it</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-29 19:21:12" itemprop="dateCreated datePublished" datetime="2019-05-29T19:21:12+08:00">2019-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h4><p>Git is a distributed version control system, which means you can work locally but you can also share or “push” your changes to other servers. Before you can push your changes to a GitLab server you need a secure communication channel for sharing information.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/29/ssh-generate-SSH-key-and-deploy-it/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/05/16/git-version-control-basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/16/git-version-control-basics/" class="post-title-link" itemprop="url">Git版本控制基础应用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-05-16 14:26:15" itemprop="dateCreated datePublished" datetime="2019-05-16T14:26:15+08:00">2019-05-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>过去的一系列产品开发过程中，版本控制大多集中于svn的应用，对于git相对较为生疏。现阶段在开发一款企业级多系统应用过程中，对产品的版本分割、迭代有较强的前置需求，需要我自行维护构建一整套多版本的开发源码，因此借助公司内部已有gitlab平台做出基本尝试。<br>此文主要是用以记录采用git这一整套分布式版本控制系统过程中所归纳总结的一系列命令行、Repository、Branches等管理应用心得及踩坑之处。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/16/git-version-control-basics/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/04/23/python-tutorial-record/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/23/python-tutorial-record/" class="post-title-link" itemprop="url">【Python】基础教程学习记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-23 16:35:57" itemprop="dateCreated datePublished" datetime="2019-04-23T16:35:57+08:00">2019-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文核心记录在<code>Python</code>基础知识与进阶教程学习过程中的一些零碎知识记录，主要用于基础知识的巩固，以便后续使用<code>Python</code>过程遇到疑问参照。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/23/python-tutorial-record/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/04/19/node-server-deploy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/19/node-server-deploy/" class="post-title-link" itemprop="url">【Server】基于Node及MongoDB的服务配置与部署</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-19 10:52:36" itemprop="dateCreated datePublished" datetime="2019-04-19T10:52:36+08:00">2019-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-25 14:35:47" itemprop="dateModified" datetime="2019-08-25T14:35:47+08:00">2019-08-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在过去几天的调研参考之后，拟定<em>Fork</em>Github相关的repositories，构建整站解决方案。</p>
+<ul>
+<li>后端服务基于<a target="_blank" rel="noopener" href="https://github.com/bayuefen/node-elm">node-elm</a></li>
+<li>数据库采用<a target="_blank" rel="noopener" href="https://www.mongodb.com/">MongoDB</a></li>
+<li>商户系统Web服务基于<a target="_blank" rel="noopener" href="https://github.com/bayuefen/vue2-manage">vue2-manage</a></li>
+<li>用户系统Web服务基于<a target="_blank" rel="noopener" href="https://github.com/bayuefen/vue2-elm">vue2-elm</a></li>
+</ul>
+<p>本文主要根据Node及MongoDB，在服务配置与部署过程中所遇到的一些问题的解决方案进行总结。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/19/node-server-deploy/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2019/04/17/python-lib-unittest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -501,7 +878,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

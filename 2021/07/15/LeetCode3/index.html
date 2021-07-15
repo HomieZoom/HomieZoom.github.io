@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"homiezoom.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="【leetcod每日一题】2021-7-9&#x2F;[面试题 17.10. 主要元素]题目数组中占比超过一半的元素称之为主要元素。给你一个 整数 数组，找出其中的主要元素。若没有，返回 -1 。请设计时间复杂度为 O(N) 、空间复杂度为 O(1) 的解决方案。 示例 1： 输入：[1,2,5,9,5,9,5,5,5]输出：5示例 2： 输入：[3,2]输出：-1示例 3： 输入：[2,2,1,1,1,2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode3">
+<meta property="og:url" content="https://homiezoom.github.io/2021/07/15/LeetCode3/index.html">
+<meta property="og:site_name" content="Homie blog">
+<meta property="og:description" content="【leetcod每日一题】2021-7-9&#x2F;[面试题 17.10. 主要元素]题目数组中占比超过一半的元素称之为主要元素。给你一个 整数 数组，找出其中的主要元素。若没有，返回 -1 。请设计时间复杂度为 O(N) 、空间复杂度为 O(1) 的解决方案。 示例 1： 输入：[1,2,5,9,5,9,5,5,5]输出：5示例 2： 输入：[3,2]输出：-1示例 3： 输入：[2,2,1,1,1,2">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-15T15:30:52.000Z">
+<meta property="article:modified_time" content="2021-07-15T15:38:19.116Z">
+<meta property="article:author" content="bayue">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://homiezoom.github.io/2021/07/15/LeetCode3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LeetCode3 | Homie blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Homie blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://homiezoom.github.io/2021/07/15/LeetCode3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="bayue">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Homie blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-15 23:30:52 / Modified: 23:38:19" itemprop="dateCreated datePublished" datetime="2021-07-15T23:30:52+08:00">2021-07-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="【leetcod每日一题】2021-7-9-面试题-17-10-主要元素"><a href="#【leetcod每日一题】2021-7-9-面试题-17-10-主要元素" class="headerlink" title="【leetcod每日一题】2021-7-9/[面试题 17.10. 主要元素]"></a>【leetcod每日一题】2021-7-9/[<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-majority-element-lcci/">面试题 17.10. 主要元素</a>]</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>数组中占比超过一半的元素称之为主要元素。给你一个 整数 数组，找出其中的主要元素。若没有，返回 -1 。请设计时间复杂度为 O(N) 、空间复杂度为 O(1) 的解决方案。</p>
+<p>示例 1：</p>
+<p>输入：[1,2,5,9,5,9,5,5,5]<br>输出：5<br>示例 2：</p>
+<p>输入：[3,2]<br>输出：-1<br>示例 3：</p>
+<p>输入：[2,2,1,1,1,2,2]<br>输出：2</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>今日题目是一道简单题目，看完基本上就思路很清晰了。这里提供两种解法吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        counter = collections.Counter(nums)</span><br><span class="line">        counter = <span class="built_in">sorted</span>(counter.items(),key = <span class="keyword">lambda</span> x : x[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span> counter[-<span class="number">1</span>] [<span class="number">1</span>] &gt; n // <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> counter[-<span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<p>这里是直接只用了collections模块中的Counter方法，统计列表中个元素出现的频次，然后调用sorted方法，根据出现的次数排序，取出现次数最多的值。但是在函数返回的时候需要再判断一次该值出现次数是否超过列表的一般。这种解法相对比较朴素。</p>
+<p>下面还有相对高级一点的解法（其实并没有）。使用摩尔计数法。至于为什么要叫摩尔计数其实我也不太清楚，反正大家都这么叫也就这么叫了。</p>
+<p>题目要求找到列表中出现次数超过列表总数一半的元素，所以假定最元素为主要元素，并技术count = 1，然后遍历后续数组，遇到相同元素就count++ ，否则count–，一旦count == 0,则记新的元素为主要元素。其实思路就是不相同的元素互相抵消，最后剩下元素就有可能是主要元素。为什么要说有可能？因为如果像[1, 2, 3]这样的数组，肉眼可见是没有主要元素的，但是如果单纯按照上述方法遍历一遍数组，最后主要元素会记为3。所以在最后需要再验证一遍元素的出现次数是否超过一半。代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        major = nums[<span class="number">0</span>]</span><br><span class="line">        count = <span class="number">1</span></span><br><span class="line">        length = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums[<span class="number">1</span>:]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> count:</span><br><span class="line">                major = i</span><br><span class="line">                count = <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == major:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> major <span class="keyword">if</span> nums.count(major) &gt; length // <span class="number">2</span> <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>其实本题还可以使用哈希表计数一旦某一元素出现次数超过 length // 2就返回该元素，否则返回-1。</p>
+<p>（因为太菜了，所以只能在写一道简单题的多种解法。有点孔乙己茴香豆的四种写法的味道。）</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>计数排序：</p>
+<p>​    时间复杂度：计数接口的时间复杂度O(N),排序接口的时间复杂度O(N)。没有嵌套关系，所以总的来说时间复杂度还是O(N)级别的。</p>
+<p>​    空间复杂度：额外申请了一个列表，空间复杂度O(N)</p>
+<p>摩尔排序：</p>
+<p>​    时间复杂度：遍历一遍数组，时间复杂度O(N)</p>
+<p>​    空间复杂度：额外申请了3个变量，空间复杂度为O(1)</p>
+<p>哈希计数：</p>
+<p>​    和第一种解法相同。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/15/LeetCode2/" rel="prev" title="LeetCode2">
+      <i class="fa fa-chevron-left"></i> LeetCode2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/15/LeetCode4/" rel="next" title="LeetCode4">
+      LeetCode4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90leetcod%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E3%80%912021-7-9-%E9%9D%A2%E8%AF%95%E9%A2%98-17-10-%E4%B8%BB%E8%A6%81%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">【leetcod每日一题】2021-7-9&#x2F;[面试题 17.10. 主要元素]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">bayue</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bayue</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
